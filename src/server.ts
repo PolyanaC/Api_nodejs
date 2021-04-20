@@ -1,6 +1,12 @@
 import express from "express";
 
+import "./database";
+import { routes } from "./routes";
+
 const app = express();
+
+app.use(express.json());
+app.use(routes);
 
 /**
  * GET = Buscas
@@ -10,13 +16,5 @@ const app = express();
  * Patch = Alterar uma informação especifica
  * 
  */
-
-app.get("/", (request, response) => {
-    return response.json({ mensagem: "Oi eu sou uma rota get"});
-});
-
-app.post("/users", (request, response) => {
-    return response.json({mensagem : "Usuário cadastrado com sucesso"});
-});
 
 app.listen(3333, () => console.log("Oi eu tô rodando"));
